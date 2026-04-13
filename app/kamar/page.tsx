@@ -78,7 +78,9 @@ export default function KamarPage() {
           <Settings2 className="w-5 h-5 text-muted-foreground hidden sm:block" />
           <Select
             value={filterStatus}
-            onValueChange={(val: string) => setFilterStatus(val as RoomStatus)}
+            onValueChange={(val) => {
+              if (val) setFilterStatus(val as RoomStatus);
+            }}
           >
             <SelectTrigger className="w-[180px] bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
               <SelectValue placeholder="Filter Status" />
