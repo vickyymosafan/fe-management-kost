@@ -64,7 +64,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Metric 4 */}
-        <Card className="border-none shadow-md bg-gradient-to-br from-primary to-rose-400 text-white hover:shadow-lg transition-shadow">
+        <Card className="border-none shadow-md bg-linear-to-br from-primary to-rose-400 text-white hover:shadow-lg transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-white/80">Pendapatan Bulan Ini</CardTitle>
             <Banknote className="h-4 w-4 text-white/80" />
