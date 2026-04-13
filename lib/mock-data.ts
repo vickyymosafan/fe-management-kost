@@ -18,8 +18,9 @@ export const DUMMY_ROOMS = [
 ];
 
 export const DUMMY_TENANTS = [
-  { id: "t1", nama: "Budi Santoso", kamar: "102", noHp: "081234567890", statusPembayaran: "Lunas" },
-  { id: "t2", nama: "Siti Aminah", kamar: "104", noHp: "081298765432", statusPembayaran: "Belum Bayar" },
+  { id: "t1", nama: "Budi Santoso", kamar: "102", noHp: "081234567890", statusPembayaran: "Lunas", ktp: "3271042801990001", avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d" },
+  { id: "t2", nama: "Siti Aminah", kamar: "104", noHp: "081298765432", statusPembayaran: "Belum Bayar", ktp: "3271045204980002", avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d" },
+  { id: "t3", nama: "Ahmad Rifai", kamar: "105", noHp: "081345678123", statusPembayaran: "Lunas", ktp: "3271041112990005", avatar: "https://i.pravatar.cc/150?u=a04258114e29026702d" },
 ];
 
 export const DUMMY_PAYMENTS = [
