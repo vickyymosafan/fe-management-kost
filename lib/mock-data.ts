@@ -24,6 +24,9 @@ export const DUMMY_TENANTS = [
 ];
 
 export const DUMMY_PAYMENTS = [
-  { id: "p1", nama: "Budi Santoso", kamar: "102", nominal: 1500000, status: "Lunas", tanggal: "2026-04-10" },
-  { id: "p2", nama: "Siti Aminah", kamar: "104", nominal: 1500000, status: "Belum Bayar", tanggal: "-" },
+  { id: "p1", nama: "Budi Santoso", kamar: "102", nominal: 1500000, status: "Lunas", tanggal: "10 April 2026", invoice: "INV-20260401" },
+  { id: "p2", nama: "Siti Aminah", kamar: "104", nominal: 1500000, status: "Belum Bayar", tanggal: "-", invoice: "INV-20260402" },
+  { id: "p3", nama: "Ahmad Rifai", kamar: "105", nominal: 2200000, status: "Lunas", tanggal: "05 April 2026", invoice: "INV-20260403" },
+  { id: "p4", nama: "Rizky Firmansyah", kamar: "101", nominal: 2500000, status: "Telat", tanggal: "-", invoice: "INV-20260404" },
+  { id: "p5", nama: "Dian Pelangi", kamar: "107", nominal: 1800000, status: "Lunas", tanggal: "01 April 2026", invoice: "INV-20260405" },
 ];
