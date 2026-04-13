@@ -22,17 +22,17 @@ const formatRupiah = (n: number) =>
 
 export default function TenantDashboardPage() {
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-500">
       {/* Page Title */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <LayoutDashboard className="w-8 h-8" />
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <LayoutDashboard className="w-6 h-6 sm:w-8 sm:h-8" />
           Beranda Penyewa
         </h1>
       </div>
 
       {/* Metric Cards */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <Card className="hover:shadow-lg transition-shadow border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">No. Kamar</CardTitle>
@@ -50,7 +50,7 @@ export default function TenantDashboardPage() {
             <CalendarDays className="h-4 w-4 text-emerald-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">10 Apr – 10 Mei 2026</div>
+            <div className="text-base sm:text-lg font-bold text-emerald-600 dark:text-emerald-400">10 Apr – 10 Mei 2026</div>
             <p className="text-xs text-muted-foreground mt-1">Sisa 27 hari</p>
           </CardContent>
         </Card>
@@ -68,7 +68,7 @@ export default function TenantDashboardPage() {
       </div>
 
       {/* Bottom Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-7">
         {/* Riwayat Tagihan Table */}
         <Card className="lg:col-span-4 border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
           <CardHeader>
@@ -76,12 +76,12 @@ export default function TenantDashboardPage() {
             <CardDescription>3 tagihan terakhir kamar Anda.</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-hidden">
-              <Table>
+            <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-x-auto">
+              <Table className="min-w-[400px]">
                 <TableHeader className="bg-slate-50 dark:bg-slate-900/50">
                   <TableRow>
                     <TableHead>Bulan</TableHead>
-                    <TableHead>Invoice</TableHead>
+                    <TableHead className="hidden sm:table-cell">Invoice</TableHead>
                     <TableHead>Nominal</TableHead>
                     <TableHead className="text-right">Status</TableHead>
                   </TableRow>
@@ -90,7 +90,7 @@ export default function TenantDashboardPage() {
                   {riwayatTagihan.map((t) => (
                     <TableRow key={t.invoice}>
                       <TableCell className="font-semibold">{t.bulan}</TableCell>
-                      <TableCell className="font-mono text-xs text-muted-foreground">{t.invoice}</TableCell>
+                      <TableCell className="hidden sm:table-cell font-mono text-xs text-muted-foreground">{t.invoice}</TableCell>
                       <TableCell className="font-medium text-primary">{formatRupiah(t.nominal)}</TableCell>
                       <TableCell className="text-right">
                         {t.status === "Lunas"
@@ -106,7 +106,7 @@ export default function TenantDashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Tagihan Bulan Ini Detail */}
+        {/* Rincian Bulan Ini */}
         <Card className="lg:col-span-3 border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -119,19 +119,19 @@ export default function TenantDashboardPage() {
               {tagiBulanIni.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="flex items-center space-x-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-background/50">
-                    <div className={`w-10 h-10 rounded-full bg-muted flex items-center justify-center`}>
-                      <Icon className={`w-5 h-5 ${item.color}`} />
+                  <div key={item.label} className="flex items-center space-x-3 md:space-x-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-background/50">
+                    <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
+                      <Icon className={`w-4 h-4 md:w-5 md:h-5 ${item.color}`} />
                     </div>
-                    <div className="flex-1 space-y-0.5">
+                    <div className="flex-1 space-y-0.5 min-w-0">
                       <p className="text-sm font-medium leading-none">{item.label}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-muted-foreground truncate">
                         {item.nominal ? formatRupiah(item.nominal) : "Menunggu tagihan"}
                       </p>
                     </div>
                     {item.status === "Lunas"
-                      ? <Badge className="bg-emerald-500 hover:bg-emerald-600 text-white border-none shadow-sm">Lunas</Badge>
-                      : <Badge variant="outline" className="text-destructive border-destructive/30 bg-destructive/5">Belum</Badge>
+                      ? <Badge className="bg-emerald-500 hover:bg-emerald-600 text-white border-none shadow-sm shrink-0">Lunas</Badge>
+                      : <Badge variant="outline" className="text-destructive border-destructive/30 bg-destructive/5 shrink-0">Belum</Badge>
                     }
                   </div>
                 );

@@ -41,14 +41,14 @@ export default function TiketPage() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <Wrench className="w-8 h-8" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <Wrench className="w-6 h-6 sm:w-8 sm:h-8" />
           Laporan & Tiket
         </h1>
-        <Button className="gap-2" onClick={() => setIsOpen(true)}>
+        <Button className="gap-2 w-full sm:w-auto" onClick={() => setIsOpen(true)}>
           <Plus className="w-4 h-4" /> Buat Tiket
         </Button>
       </div>
@@ -62,14 +62,14 @@ export default function TiketPage() {
           <CardDescription>Semua tiket keluhan dan kerusakan yang pernah Anda ajukan.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-hidden">
-            <Table>
+          <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-x-auto">
+            <Table className="min-w-[520px]">
               <TableHeader className="bg-slate-50 dark:bg-slate-900/50">
                 <TableRow>
                   <TableHead>Judul</TableHead>
                   <TableHead>Kategori</TableHead>
-                  <TableHead>Tanggal</TableHead>
-                  <TableHead>Deskripsi</TableHead>
+                  <TableHead className="hidden sm:table-cell">Tanggal</TableHead>
+                  <TableHead className="hidden md:table-cell">Deskripsi</TableHead>
                   <TableHead className="text-right">Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -81,8 +81,8 @@ export default function TiketPage() {
                       <TableCell>
                         <Badge variant="secondary" className="font-medium">{ticket.kategori}</Badge>
                       </TableCell>
-                      <TableCell className="text-muted-foreground text-sm">{ticket.tanggal}</TableCell>
-                      <TableCell className="text-muted-foreground text-sm max-w-[240px] truncate">{ticket.deskripsi}</TableCell>
+                      <TableCell className="hidden sm:table-cell text-muted-foreground text-sm">{ticket.tanggal}</TableCell>
+                      <TableCell className="hidden md:table-cell text-muted-foreground text-sm max-w-[240px] truncate">{ticket.deskripsi}</TableCell>
                       <TableCell className="text-right">{getStatusBadge(ticket.status)}</TableCell>
                     </TableRow>
                   ))
@@ -104,7 +104,7 @@ export default function TiketPage() {
 
       {/* Create Tiket Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
+        <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Buat Laporan Baru</DialogTitle>
             <DialogDescription>Deskripsikan masalah secara jelas agar tim kami segera menindaklanjuti.</DialogDescription>
@@ -151,9 +151,9 @@ export default function TiketPage() {
               />
             </div>
           </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsOpen(false)}>Batal</Button>
-            <Button disabled={!form.judul || !form.deskripsi} onClick={handleSubmit}>Kirim Laporan</Button>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" className="w-full sm:w-auto" onClick={() => setIsOpen(false)}>Batal</Button>
+            <Button disabled={!form.judul || !form.deskripsi} className="w-full sm:w-auto" onClick={handleSubmit}>Kirim Laporan</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

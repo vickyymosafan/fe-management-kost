@@ -21,14 +21,14 @@ export default function TenantPage() {
   );
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-500">
       {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <Users className="w-8 h-8" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <Users className="w-6 h-6 sm:w-8 sm:h-8" />
           Data Penyewa
         </h1>
-        <div className="relative w-full sm:w-[300px]">
+        <div className="relative w-full sm:w-[280px] md:w-[300px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Cari nama / No. Kamar..."
@@ -49,7 +49,7 @@ export default function TenantPage() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredTenants.map((tenant) => (
             <Card
               key={tenant.id}

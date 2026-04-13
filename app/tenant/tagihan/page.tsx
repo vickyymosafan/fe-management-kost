@@ -59,14 +59,14 @@ export default function TagihanPage() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <Receipt className="w-8 h-8" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <Receipt className="w-6 h-6 sm:w-8 sm:h-8" />
           Tagihan & Pembayaran
         </h1>
-        <div className="relative w-full sm:w-[280px]">
+        <div className="relative w-full sm:w-[280px] md:w-[300px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Cari invoice / bulan..."
@@ -77,7 +77,7 @@ export default function TagihanPage() {
         </div>
       </div>
 
-      {/* Main Card with Tabs + Table */}
+      {/* Main Card */}
       <Card className="border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -87,21 +87,21 @@ export default function TagihanPage() {
         </CardHeader>
         <CardContent>
           <Tabs value={tab} onValueChange={setTab} className="w-full">
-            <TabsList className="mb-4">
+            <TabsList className="mb-4 flex flex-wrap h-auto gap-1 sm:h-10">
               <TabsTrigger value="Semua">Semua</TabsTrigger>
               <TabsTrigger value="Lunas">Lunas</TabsTrigger>
               <TabsTrigger value="Belum Bayar">Belum Bayar</TabsTrigger>
               <TabsTrigger value="Menunggu Verifikasi">Verifikasi</TabsTrigger>
             </TabsList>
             <TabsContent value={tab} className="focus-visible:outline-none">
-              <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-hidden">
-                <Table>
+              <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-x-auto">
+                <Table className="min-w-[520px]">
                   <TableHeader className="bg-slate-50 dark:bg-slate-900/50">
                     <TableRow>
                       <TableHead>Invoice</TableHead>
                       <TableHead>Periode</TableHead>
                       <TableHead>Nominal</TableHead>
-                      <TableHead>Tgl Bayar</TableHead>
+                      <TableHead className="hidden md:table-cell">Tgl Bayar</TableHead>
                       <TableHead className="text-right">Status / Aksi</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -112,15 +112,13 @@ export default function TagihanPage() {
                           <TableCell className="font-mono font-medium text-xs text-muted-foreground">{bill.invoice}</TableCell>
                           <TableCell className="font-semibold">{bill.bulan}</TableCell>
                           <TableCell className="font-medium text-primary">{formatRupiah(bill.nominal)}</TableCell>
-                          <TableCell>
-                            {bill.tanggalBayar
-                              ? bill.tanggalBayar
-                              : <span className="text-slate-400 italic">N/A</span>}
+                          <TableCell className="hidden md:table-cell">
+                            {bill.tanggalBayar ? bill.tanggalBayar : <span className="text-slate-400 italic">N/A</span>}
                           </TableCell>
                           <TableCell className="text-right">
                             {bill.status === "Belum Bayar" ? (
-                              <Button size="sm" className="gap-1.5" onClick={() => handleOpenUpload(bill)}>
-                                <Upload className="w-3.5 h-3.5" /> Upload Bukti
+                              <Button size="sm" className="gap-1.5 h-8 text-xs" onClick={() => handleOpenUpload(bill)}>
+                                <Upload className="w-3 h-3" /> Upload
                               </Button>
                             ) : (
                               getStatusBadge(bill.status)
@@ -148,7 +146,7 @@ export default function TagihanPage() {
 
       {/* Upload Dialog */}
       <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
-        <DialogContent>
+        <DialogContent className="w-[calc(100%-2rem)] sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Upload Bukti Pembayaran</DialogTitle>
             <DialogDescription>
@@ -168,9 +166,9 @@ export default function TagihanPage() {
               </div>
             )}
           </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsUploadOpen(false)}>Batal</Button>
-            <Button disabled={!filePreview} onClick={handleSubmitBukti}>Kirim Bukti</Button>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" className="w-full sm:w-auto" onClick={() => setIsUploadOpen(false)}>Batal</Button>
+            <Button disabled={!filePreview} className="w-full sm:w-auto" onClick={handleSubmitBukti}>Kirim Bukti</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

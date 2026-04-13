@@ -19,14 +19,14 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <LayoutDashboard className="w-8 h-8" />
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <LayoutDashboard className="w-6 h-6 sm:w-8 sm:h-8" />
           General Overview
         </h1>
       </div>
 
       {/* Bento Grid Top Metrics */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {/* Metric 1 */}
         <Card className="hover:shadow-lg transition-shadow border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -77,13 +77,14 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom Grid Layout - Lists */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+      <div className="grid gap-4 md:gap-6 grid-cols-1 lg:grid-cols-7">
         <Card className="lg:col-span-4 border-none shadow-sm bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
           <CardHeader>
             <CardTitle>Status Kamar Terbaru</CardTitle>
             <CardDescription>Ringkasan kondisi ruangan secara instan.</CardDescription>
           </CardHeader>
           <CardContent>
+            <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -108,6 +109,7 @@ export default function Dashboard() {
                 ))}
               </TableBody>
             </Table>
+            </div>
           </CardContent>
         </Card>
 

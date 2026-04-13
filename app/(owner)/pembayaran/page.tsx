@@ -60,14 +60,14 @@ export default function PembayaranPage() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-6 md:space-y-8 animate-in fade-in duration-500">
       {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
-          <CreditCard className="w-8 h-8" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-primary flex items-center gap-2">
+          <CreditCard className="w-6 h-6 sm:w-8 sm:h-8" />
           Pembayaran
         </h1>
-        <div className="relative w-full sm:w-[300px]">
+        <div className="relative w-full sm:w-[280px] md:w-[300px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Cari Invoice atau Nama..."
@@ -103,8 +103,8 @@ export default function PembayaranPage() {
             </TabsList>
 
             <TabsContent value={filterTab} className="focus-visible:outline-none">
-              <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-hidden">
-                <Table>
+              <div className="rounded-md border border-slate-200 dark:border-slate-800 bg-background/50 overflow-x-auto">
+                <Table className="min-w-[600px]">
                   <TableHeader className="bg-slate-50 dark:bg-slate-900/50">
                     <TableRow>
                       <TableHead>Invoice</TableHead>
