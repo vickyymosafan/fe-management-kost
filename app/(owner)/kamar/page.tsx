@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BedDouble, Edit3, Settings2 } from "lucide-react";
-import { useRoomStore, RoomStatus, Room } from "@/store/useRoomStore";
+import { useRoomStore, RoomStatus, Room } from "@/store/owner/useRoomStore";
 import {
   Card,
   CardContent,

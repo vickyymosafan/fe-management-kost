@@ -1,7 +1,7 @@
 "use client";
 
 import { CreditCard, History, RefreshCcw, Search } from "lucide-react";
-import { usePaymentStore, PaymentStatusFilter } from "@/store/usePaymentStore";
+import { usePaymentStore, PaymentStatusFilter } from "@/store/owner/usePaymentStore";
 import {
   Card,
   CardContent,

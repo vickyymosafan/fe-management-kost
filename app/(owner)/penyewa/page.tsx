@@ -1,7 +1,7 @@
 "use client";
 
 import { Users, Search, Phone, CreditCard, Home } from "lucide-react";
-import { useTenantStore } from "@/store/useTenantStore";
+import { useTenantStore } from "@/store/owner/useTenantStore";
 import {
   Card,
   CardContent,
