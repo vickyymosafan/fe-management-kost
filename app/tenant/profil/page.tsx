@@ -136,7 +136,7 @@ export default function ProfilPage() {
           {/* KTP Card Visual */}
           <div className="rounded-xl bg-linear-to-br from-slate-700 to-slate-900 p-5 text-white relative overflow-hidden shadow-md">
             <div className="absolute inset-0 opacity-5">
-              <div className="w-48 h-48 rounded-full border-[30px] border-white absolute -right-12 -top-12" />
+              <div className="w-48 h-48 rounded-full border-30 border-white absolute -right-12 -top-12" />
             </div>
             <p className="font-bold uppercase tracking-widest text-white/60 text-[10px] mb-3">
               Kartu Tanda Penduduk
